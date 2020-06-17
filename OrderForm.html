@@ -1,0 +1,789 @@
+<html>
+<head>
+<title>Order Form</title>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- Save for Web Slices (Order Form.psd) -->
+<table width="1201" height="2001" border="0" align="center" cellpadding="0" cellspacing="0" id="Table_01">
+	<tr>
+		<td colspan="2" rowspan="2">
+			<img src="images-orderform/OrderForm_01.gif" width="185" height="46" alt=""></td>
+		<td colspan="2">
+			<img src="images-orderform/OrderForm_02.gif" width="366" height="45" alt=""></td>
+		<td rowspan="5">
+			<img src="images-orderform/OrderForm_03.gif" width="309" height="135" alt=""></td>
+		<td rowspan="2"><a href="index.html"><img src="images-orderform/OrderForm_04.gif" width="99" height="46" alt=""></a></td>
+		<td rowspan="2"><a href="OrderForm.html"><img src="images-orderform/OrderForm_05.gif" width="126" height="46" alt=""></a></td>
+		<td rowspan="2"><a href="Styles.html"><img src="images-orderform/OrderForm_06.gif" width="103" height="46" alt=""></a></td>
+		<td rowspan="5">
+			<img src="images-orderform/OrderForm_07.gif" width="12" height="135" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="45" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2" rowspan="2">
+			<img src="images-orderform/OrderForm_08.gif" width="366" height="20" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="1" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="images-orderform/OrderForm_09.gif" width="185" height="19" alt=""></td>
+		<td colspan="3" rowspan="3">
+			<img src="images-orderform/OrderForm_10.gif" width="328" height="89" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="19" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img src="images-orderform/OrderForm_11.gif" width="15" height="70" alt=""></td>
+		<td colspan="2">
+			<img src="images-orderform/OrderForm_12.jpg" width="238" height="52" alt=""></td>
+		<td rowspan="2">
+			<img src="images-orderform/OrderForm_13.gif" width="298" height="70" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="52" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="images-orderform/OrderForm_14.gif" width="238" height="18" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="18" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="9">
+			<img src="images-orderform/OrderForm_15.gif" width="1200" height="467" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="467" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="9">
+			<img src="images-orderform/OrderForm_16.gif" width="1200" height="111" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="111" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="9">
+			<img src="images-orderform/OrderForm_17.gif" width="1200" height="86" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="86" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="9">
+			<img src="images-orderform/OrderForm_18.jpg" width="1" height="1" alt="">
+
+
+
+<script type="text/javascript">
+
+	var finalp = 0;  //Global Variable which updates the final price after tax and price of styles as well as quantities has been added
+	var list = new Array; //acts as an Array List each style selected to be added before sending it to the spreadsheet
+	var listname = new Array; // acts as an Array List where the quantity for each style is added before sending it to the spreadsheet
+	var sumPrice = 0;
+	
+	
+	function addDetails(){
+	var addn = document.getElementById("addn").value;
+		if( addn == ""){
+			alert('You have not entered your first name');
+			document.getElementById('addn').style.borderColor = "red";
+			return false;
+		}
+		
+	var addl = document.getElementById("addl").value;
+		if( addl == ""){
+			alert('You have not entered your last name');
+			document.getElementById('addl').style.borderColor = "red";
+			return false;
+ 	 }
+	 
+	 var arr = [1,2,3,4,5,6];
+    var p = 6;
+		for (var i = 0; i < 6; i= i + 1){
+			if(document.getElementById("Style-"+ arr[i]).checked){
+				p = p - 1;
+		}
+	}
+
+		if (p == 6) {
+  			alert("You have not selected any style, please select a style")
+			document.getElementById("subHeader").style.color = "red";
+			return false;
+			
+  	}
+	
+	var arr2 = [1,2];
+    var p1 = 2
+	for(var i = 0; i < 2; i= i +1){
+		if(document.getElementById("n" + arr2[i]).checked){
+		p1 = p1 -1;
+		}
+		
+	}
+	if (p1 == 2) {
+  			alert("You have not selected your shipping location")
+			document.getElementById("par").style.color = "red";
+			return false;
+  }
+	
+	
+
+	 var country = document.getElementById("c").value;
+		if( country == ""){
+			alert('You have not entered a City');
+			document.getElementById('c').style.borderColor = "red";
+			return false;
+			
+ 	 }
+	 
+	  var email = document.getElementById("e").value;
+		if( email == ""){
+			alert('You have not entered your address');
+			document.getElementById('e').style.borderColor = "red";
+			return false;
+ 	 }
+	 
+	  
+	
+	 var address = document.getElementById("a").value;
+		if( address == ""){
+			alert('You have not entered your address');
+			document.getElementById('a').style.borderColor = "red";
+			return false;
+ 	 }
+	 
+	 
+
+}
+	
+
+
+function addLastName() {
+	var addname = document.getElementById("addl").value;
+		if( addname == ""){
+			alert('You have not entered your last name');
+			document.getElementById('addl').style.borderColor = "red";
+			return false;
+ 	 }
+ }
+ 
+ function addCity() {
+	var country = document.getElementById("c").value;
+		if( country == ""){
+			alert('You have not entered a City');
+			document.getElementById('c').style.borderColor = "red";
+ 	 }
+	 
+ }
+ 
+  function addAddress() {
+	var address = document.getElementById("a").value;
+		if( address == ""){
+			alert('You have not entered a City');
+			document.getElementById('a').style.borderColor = "red";
+			return false;
+ 	 }
+	 
+	 
+	 
+ }
+ 
+ 
+  function addEmail() {
+	var Email = document.getElementById("e").value;
+		if( Email == ""){
+			alert('You have not entered a City');
+			document.getElementById('e').style.borderColor = "red";
+			return false;
+ 	 }
+	 
+ }
+ 
+
+function addStyleandQuantities(style) {
+	 var cStyle = document.createElement("input");
+     var addLabel = document.createElement("label");
+     var newStyle = document.createElement("div");
+     var addStyle = document.getElementById("newS");
+	 
+	
+	if (style.checked) {
+		cStyle.type = "number";
+		cStyle.max = 20;
+		
+		cStyle.value = prompt("Enter the number of Quantities:");
+		
+		cStyle.readOnly = true;
+        
+		addLabel.innerHTML= "Quantities for: \n" + style.id;
+        addLabel.id = "addLabel";
+        
+		addStyle.appendChild(addLabel);
+        newStyle.id = "addStyle";
+        newStyle.appendChild(cStyle);
+        addStyle.appendChild(newStyle);
+			} 
+	else {
+		document.getElementById("addLabel").remove();
+        document.getElementById("addStyle").remove();
+		
+	}
+	
+	 if(cStyle.value < 0){
+	 	alert("Please enter a non negative, please reselect the style.");
+		return false;
+		
+	 } else if (cStyle.value == 0){
+	 	alert("Please enter a number, please reselect the style. No letters or special characters");
+		return false;
+		
+	 }	
+	 
+	 
+	 
+	 
+	var p = newStyle.appendChild(cStyle).value;
+	var q = document.getElementsByTagName("input");
+
+	if(style.checked){
+		alert("You have selected" + " " + Math.floor(p) + " " + "pieces for:" + " " + style.id);
+	}
+	var totalp = [0,0,0,0,0,0];
+	var price = [39.99,49.99,49.99,39.99,49.99,39.99];
+	var isChecked = [false,false,false,false,false,false];
+	var arr = [1,2,3,4,5,6];
+	var input = [0,0,0,0,0,0];
+	var input2 = [0,0,0,0,0,0];
+	
+	if(cStyle.value > 20){ 
+	alert("Although you have selected a style, you have entered too many quantities, our max quantity for each style is 20 pieces, please try again and enter less quantities");
+	document.getElementById("addLabel").remove();
+    document.getElementById("addStyle").remove();
+	return false;
+
+}
+	if(document.getElementById("Style-1").checked == true && isChecked[0] == false){
+		
+		totalp[0] = newStyle.appendChild(cStyle).value * price[0];
+		    var roundup = Number(totalp[0].toFixed(2));
+				var p = "The total price for" + " " + style.id + " " + "is:" + "$" + " " + roundup;
+				var t = alert(p);
+					list.push(style.id);
+					listname.push(newStyle.appendChild(cStyle).value);
+		    
+			isChecked[0 + 1] = true;
+			isChecked[0 + 2] = true;
+			isChecked[0 + 3] = true;
+			isChecked[0 + 4] = true;
+			isChecked[0 + 5] = true;
+	 			
+
+			} 
+	
+	   	
+	if(document.getElementById("Style-2").checked == true && isChecked[1] == false){
+		totalp[1] = newStyle.appendChild(cStyle).value * price[1];
+		    var roundup = Number(totalp[1].toFixed(2));
+				var p = "The total price for" + " " + style.id + " " + "is:" + "$" + " " + roundup;
+				var t = alert(p);
+					list.push(style.id);
+					listname.push(newStyle.appendChild(cStyle).value);
+		    
+			isChecked[0] = true;
+			isChecked[2] = true;
+			isChecked[3] = true;
+			isChecked[4] = true;
+			isChecked[5] = true;
+
+			} 
+	if(document.getElementById("Style-3").checked == true && isChecked[2] == false){
+		totalp[2]= newStyle.appendChild(cStyle).value * price[2];
+		    var roundup = Number(totalp[2].toFixed(2));
+				var p = "The total price for" + " " + style.id + " " + "is:" + "$"  + " " + roundup;
+				var t = alert(p);
+					list.push(style.id);
+					listname.push(newStyle.appendChild(cStyle).value);
+		    
+			isChecked[0] = true;
+			isChecked[1] = true;
+			isChecked[3] = true;
+			isChecked[4] = true;
+			isChecked[5] = true;
+
+			} 
+	if(document.getElementById("Style-4").checked == true && isChecked[3] == false){
+		totalp[3] =newStyle.appendChild(cStyle).value * price[3];
+		    var roundup = Number(totalp[3].toFixed(2));
+				var p = "The total price for" + " " + style.id + " " + "is:" + "$" + " " + roundup;
+				var t = alert(p);
+			   		list.push(style.id);
+					listname.push(newStyle.appendChild(cStyle).value);
+		  
+		    isChecked[0] = true;
+			isChecked[1] = true;
+			isChecked[2] = true;
+			isChecked[4] = true;
+			isChecked[5] = true;
+
+			} 
+	if(document.getElementById("Style-5").checked == true && isChecked[4] == false){
+		totalp[4] = newStyle.appendChild(cStyle).value * price[4];
+		    var roundup = Number(totalp[4].toFixed(2));
+				var p = "The total price for" + " " + style.id + " " + "is:" + "$" + " " + roundup;
+				var t = alert(p);
+					list.push(style.id);
+					listname.push(newStyle.appendChild(cStyle).value);
+		    isChecked[0] = true;
+			isChecked[1] = true;
+			isChecked[2] = true;
+			isChecked[3] = true;
+			isChecked[5] = true;
+
+			} 
+   if(document.getElementById("Style-6").checked == true && isChecked[5] == false){
+		totalp[5] = newStyle.appendChild(cStyle).value * price[5];
+		    var roundup = Number(totalp[5].toFixed(2));
+				var p = "The total price for" + " " + style.id + " " + "is:" + "$" + " " + roundup;
+				var t = alert(p);
+					list.push(style.id);
+					listname.push(newStyle.appendChild(cStyle).value);
+		    
+			isChecked[0] = true;
+			isChecked[1] = true;
+			isChecked[2] = true;
+			isChecked[3] = true;
+			isChecked[4] = true;
+
+			} 
+	
+	
+	
+	for(var i = 0; i < 6; i= i + 1){
+			window.finalp = window.finalp + totalp[i];
+		}
+		
+	 alert("Current Total Price:" + " " + "$" + Number(window.finalp.toFixed(2)));
+
+	
+
+	
+	for(var i = 0; i < 6; i= i + 1){
+			if(document.getElementById("Style-" + arr[i]).checked){
+				input[i] = style.id;
+				input2[i] = p;
+			  isChecked[i + 1] = true;
+			  isChecked[i + 2] = true;
+			  isChecked[i + 3] = true;
+		      isChecked[i + 4] = true;
+			  isChecked[i + 5] = true;
+			}
+		}
+}
+function national(){
+     var op = document.createElement("label");
+	 var op2 = document.createElement("label");
+	 var addStyle = document.getElementById("printText");
+	 var div = document.createElement("div");
+	 var text1 = document.createElement("input");
+	 var text2 = document.createElement("input");
+	 var text3 = document.createElement("input");
+	 var text4 = document.createElement("input");
+	 var text5 = document.createElement("input");
+	 var br0 = document.createElement("br");
+	 var br1 = document.createElement("br");
+	 var br2 = document.createElement("br");
+	 var br3 = document.createElement("br");
+	 var br4 = document.createElement("br");
+	 var br5 = document.createElement("br");
+	 
+	 var q = document.getElementById("n2");
+	 var b = "Final Price:" + "$" + " ";
+	
+	var arr = [1,2,3,4,5,6];
+    var p = 6;
+		for (var i = 0; i < 6; i= i + 1){
+			if(document.getElementById("Style-"+ arr[i]).checked){
+				p = p - 1;
+		}
+	}
+
+		if (p == 6) {
+  			alert("You have not selected any style, please select a style");
+			var addStyle = "";
+	        var div ="";
+	 var text1 = "";
+	 var text2 = "";
+	 var text3 = "";
+	 var text4 = "";
+	 var text5 = "";
+	 var br0 = "";
+	 var br1 = "";
+	 var br2 = "";
+	 var br3 = "";
+	 var br4 = "";
+	 var br5 = "";
+	 var q = "";
+	 var b = "";
+	 var op = "";
+	 var op2 = "";
+			
+  	}
+	
+	 var op = document.createElement("label");
+	 var op2 = document.createElement("label");
+	 var addStyle = document.getElementById("printText");
+	 var div = document.createElement("div");
+	 var text2 = document.createElement("input");
+	 var text3 = document.createElement("input");
+	 var text4 = document.createElement("input");
+	 var text5 = document.createElement("input");
+	 var br0 = document.createElement("br");
+	 var br1 = document.createElement("br");
+	 var br2 = document.createElement("br");
+	 var br3 = document.createElement("br");
+	 var br4 = document.createElement("br");
+	 var br5 = document.createElement("br");
+	
+	
+	 var q = document.getElementById("n1");
+	 var b = "Final Price:" + "Rp" + " ";
+	 var arr = [1,2,3,4,5,6];
+     var p = 6;
+		for (var i = 0; i < 6; i= i + 1){
+			if(document.getElementById("Style-"+ arr[i]).checked){
+				p = p - 1;
+		}
+	}
+		if (p == 6) {
+  			alert("You have not selected any style, please select a style");
+			var addStyle = "";
+	        var div ="";
+	 var text2 = "";
+	 var text3 = "";
+	 var text4 = "";
+	 var text5 = "";
+	 var br0 = "";
+	 var br1 = "";
+	 var br2 = "";
+	 var br3 = "";
+	 var q = "";
+	 var b = "";
+	 var op = "";
+	 var op2 = "";
+}
+
+	if (document.getElementById("n1").checked) {
+			window.sumPrice = window.finalp + 4.99;
+			var roundup = Number(window.sumPrice.toFixed(2));
+			alert(b + roundup);
+			text4.type = "text"
+			text4.id = "text4"
+			text4.name = "Country"
+			text4.value = "Indonesia";
+		    text4.readOnly = true;
+			div.appendChild(text4);
+			br0.id = "br0";
+			div.appendChild(br0);
+			text5.type ="text";
+			text5.id = "text5";
+			text5.value = "Final price:" + " "+ "$" + " " + roundup;
+			text5.readOnly = true;
+			div.appendChild(text5);
+			br4.id = "br4"
+			div.appendChild(br4);
+			op.id = "lble1";
+			op.innerHTML = "Styles Selected:" + list;
+		    div.appendChild(op);
+			br5.id = "br5"
+			div.appendChild(br5);
+			op2.id = "lble2";
+			op2.innerHTML = "Quantities For Each Style:" + listname;
+		    div.appendChild(op2);
+			addStyle.appendChild(div);
+			document.getElementById("c").readOnly= false;
+			document.getElementById("e").readOnly= false;
+			document.getElementById("a").readOnly= false;
+			document.getElementById("s").value = list;
+			document.getElementById("q").value = listname;
+			document.getElementById("final").value = window.sumPrice;
+			document.getElementById("n2").remove();
+			
+	}else{
+		document.getElementById("text4").remove();
+		document.getElementById("text5").remove();
+		document.getElementById("br0").remove();
+		document.getElementById("br4").remove();
+		document.getElementById("br5").remove();
+		document.getElementById("lble1").remove();
+		document.getElementById("lble2").remove();
+		document.getElementById("s").value = "";
+		document.getElementById("q").value = "";
+		document.getElementById("final").value = "";
+	}
+}
+function international(){
+    
+	 var op = document.createElement("label");
+	 var op2 = document.createElement("label");
+	 var addStyle = document.getElementById("printText");
+	 var div = document.createElement("div");
+	 var text2 = document.createElement("input");
+	 var text3 = document.createElement("input");
+	 var text4 = document.createElement("input");
+	 var text5 = document.createElement("input");
+	 var br0 = document.createElement("br");
+	 var br1 = document.createElement("br");
+	 var br2 = document.createElement("br");
+	 var br3 = document.createElement("br");
+	 var br4 = document.createElement("br");
+	 var br5 = document.createElement("br");
+	
+	
+	 var q = document.getElementById("n1");
+	 var b = "Final Price:" + "$" + " ";
+	 var arr = [1,2,3,4,5,6];
+     var p = 6;
+		for (var i = 0; i < 6; i= i + 1){
+			if(document.getElementById("Style-"+ arr[i]).checked){
+				p = p - 1;
+		}
+	}
+		if (p == 6) {
+  			alert("You have not selected any style, please select a style");
+			var addStyle = "";
+	        var div ="";
+	 var text2 = "";
+	 var text3 = "";
+	 var text4 = "";
+	 var text5 = "";
+	 var br0 = "";
+	 var br1 = "";
+	 var br2 = "";
+	 var br3 = "";
+	 var q = "";
+	 var b = "";
+	 var op = "";
+	 var op2 = "";
+}
+
+	if (document.getElementById("n2").checked) {
+			window.sumPrice = window.finalp + 10.99;
+			var roundup = Number(window.sumPrice.toFixed(2));
+			alert(b + roundup);
+			text4.type = "text"
+			text4.id = "text4"
+			text4.name = "Country";
+		    text4.placeholder = "Enter Country of Delivery";
+			text4.value = prompt("Enter Country of Delivery");
+			text4.readOnly = true;
+			div.appendChild(text4);
+			br0.id = "br0";
+			div.appendChild(br0);
+			text5.type ="text";
+			text5.id = "text5";
+			text5.value = "Final price:" + " "+ "$" + " " + roundup;
+			text5.readOnly = true;
+			div.appendChild(text5);
+			br4.id = "br4"
+			div.appendChild(br4);
+			op.id = "lble1";
+			op.innerHTML = "Styles Selected:" + list;
+		    div.appendChild(op);
+			br5.id = "br5"
+			div.appendChild(br5);
+			op2.id = "lble2";
+			op2.innerHTML = "Quantities For Each Style:" + listname;
+		    div.appendChild(op2);
+			addStyle.appendChild(div);
+			document.getElementById("c").readOnly= false;
+			document.getElementById("e").readOnly= false;
+			document.getElementById("a").readOnly= false;
+			document.getElementById("s").value = list;
+			document.getElementById("q").value = listname;
+			document.getElementById("final").value = window.sumPrice;
+			
+	}else{
+		document.getElementById("text4").remove();
+		document.getElementById("text5").remove();
+		document.getElementById("br0").remove();
+		document.getElementById("br4").remove();
+		document.getElementById("br5").remove();
+		document.getElementById("lble1").remove();
+		document.getElementById("lble2").remove();
+		document.getElementById("s").value = "";
+		document.getElementById("q").value = "";
+		document.getElementById("final").value = "";
+	}
+ }
+ 
+ 
+
+  
+ 
+    </script>
+	
+    
+
+<h3 > <font size="4" color="blue" face="Times New Roman"> Fashion Team Order Form </font> </h3>
+<form  name="f" method="get" action="https://script.google.com/macros/s/AKfycbyoW6icB_2oVBAG6OU_Zpqf3KMm-sUPHnX-Q5efLRwRsfB2ui5m/exec" onSubmit="return addDetails();" id="testForm" action="#"> 
+
+<label>First Name</label>
+<br>
+   		<input type="text" id="addn" name="First Name" placeholder="John">
+			
+<br>
+
+<label>Last Name</label>
+	<div class="control-Label1">
+	<div class="input_Label1">
+   		<input type="text" id="addl" name="Last Name" placeholder="Doe" >
+		
+<br>
+<p id="subHeader" >Please choose from the following styles:</p>
+<br>
+
+<label>Style 1</label>
+	
+   		<input type="checkbox" id="Style-1" onClick="addStyleandQuantities(this);" >
+         	<br>
+          <img src= "https://saurishkapoorswebfolio.weebly.com/uploads/2/2/7/2/22720674/dsc-1494_orig.png" width="80" length="80">
+			
+<br>
+
+
+<label>Style 2</label>
+	
+   		<input type="checkbox" id="Style-2" onClick="addStyleandQuantities(this);" >
+        <br>
+          <img src="https://saurishkapoorswebfolio.weebly.com/uploads/2/2/7/2/22720674/dsc-1496_orig.png" width="80" length="80">
+			
+<br>
+
+
+<label>Style 3</label>
+	
+   		<input type="checkbox" id="Style-3" onClick="addStyleandQuantities(this);">
+        <br>
+          <img src="https://saurishkapoorswebfolio.weebly.com/uploads/2/2/7/2/22720674/dsc-1497_orig.jpg" width="80" length="80">
+			
+<br>
+
+
+<label>Style 4</label>
+	
+   		<input type="checkbox" id="Style-4" onClick="addStyleandQuantities(this);">
+        <br>
+          <img src="https://saurishkapoorswebfolio.weebly.com/uploads/2/2/7/2/22720674/dsc-1498_orig.jpg" width="80" length="80">
+		
+<br>
+
+
+<label>Style 5</label>
+	
+   		<input type="checkbox" id="Style-5" onClick="addStyleandQuantities(this);">
+        <br>
+          <img src="https://saurishkapoorswebfolio.weebly.com/uploads/2/2/7/2/22720674/dsc-1499_orig.jpg" width="80" length="80">
+		
+<br>
+
+
+<label>Style 6</label>
+
+   		<input type="checkbox" id="Style-6" onClick="addStyleandQuantities(this);">
+        <br>
+          <img src="https://saurishkapoorswebfolio.weebly.com/uploads/2/2/7/2/22720674/dsc-1495_orig.png" width="80" length="80">
+			
+<br>
+
+<p id="newS"> </p>
+<br>
+<p id="par">Enter your shipping location:</p>
+<br>
+
+ 
+<label>National</label>
+	<div class="control-Label1">
+	<div class="input_Label1">
+   		<input type="checkbox" id="n1" onClick="national();">
+		
+<br>
+
+
+<label>International</label>
+
+   		<input type="checkbox" id="n2" onClick="international();">
+		
+<br>
+<p id="printText"> </p>
+<br>
+
+
+
+   		<input type="text" name="City" id="c" placeholder = "City of Delivery" readonly>
+		
+<br>
+
+   		<input type="email" name="Email" id="e"  placeholder="Email" readonly>
+		
+<br>
+
+   		<input type="text" name="Address" id="a" placeholder = "Address" readonly>	
+<br>
+
+   		<input type="text" name="Quantities" id= "q"  placeholder = "Quantities" readonly>
+			
+<br>
+
+
+   		<input type="text" name="Styles"  id ="s" placeholder = "Styles" readonly>
+		
+<br>
+
+
+   		<input type="text" name="Price"  id="final" placeholder = "Price" readonly >
+		
+<br>
+
+
+
+        <button type="submit" id="postNow">Submit</button>
+ 
+</form>
+
+            </td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="1" height="1201" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="images-orderform/spacer.gif" width="15" height="1" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="170" height="1" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="68" height="1" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="298" height="1" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="309" height="1" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="99" height="1" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="126" height="1" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="103" height="1" alt=""></td>
+		<td>
+			<img src="images-orderform/spacer.gif" width="12" height="1" alt=""></td>
+		<td></td>
+	</tr>
+</table>
+<!-- End Save for Web Slices -->
+</body>
+
+<footer>
+<script>
+
+</script>
+</footer>
+
+</html>
